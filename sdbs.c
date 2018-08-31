@@ -13,14 +13,14 @@ void delay(int sec)
 struct student
 {
     long reg_no;
-    char name[20];
+    char *name;
     float cgpa;
     long contact;
-    char fathers_name[20];
-    char course[10];
-    char stream[10];
+    char *email;
+    char *course;
+    char *stream;
     struct student *next;
-}s[60];
+};
 
 int main()
 {
@@ -39,6 +39,26 @@ switch(choice)
     case 1:
     //INPUT Functionality
 
+    //Create Node
+    stu *s;
+    s = (stu*)malloc(sizeof(stu));
+    printf("\n\t \t \tEnter Your Details: ");
+    printf("\nEnter Name: ");
+    scanf("%s", &s->name);
+    printf("\nEnter Registration Number: ");
+    scanf("%l", &s->reg_no);
+    printf("\nEnter Contact: ");
+    scanf("%l", &s->contact);
+    printf("\nEnter Email: ");
+    scanf("%s", &s->email);
+    printf("\nEnter Course: ");
+    scanf("%s", &s->course);
+    printf("\nEnter Stream: ");
+    scanf("%s", &s->stream);
+    printf("Enter Cgpa: ");
+    scanf("%f", &s->cgpa);
+
+    s->next = NULL;
 
     case 2:
     //Search Feature
@@ -56,7 +76,6 @@ switch(choice)
         printf("\n\nExiting.....!");
         delay(200);
         exit(0);
-
 }
 
 }
