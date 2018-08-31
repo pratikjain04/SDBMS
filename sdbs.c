@@ -30,7 +30,8 @@ printf("\nEnter 1 to Enter Details!\n");
 printf("\nEnter 2 to Find Your Details\n");
 printf("\nEnter 3 to Edit Your Details\n");
 printf("\nEnter 4 to Delete Your Details\n");
-printf("\nEnter 5 to Exit Application\n");
+printf("\nEnter 5 to See Complete Class List\n");
+printf("\nEnter 6 to Exit Application\n");
 scanf("%d", &choice);
 switch(choice)
 {
@@ -47,11 +48,12 @@ switch(choice)
     //Delete Feature
 
     case 5:
+    //Display Details only NAME AND REGISTRATION of complete database
+
+    case 6:
         printf("\n\nExiting.....!");
         delay(200);
         exit(0);
-
-
 
 }
 
