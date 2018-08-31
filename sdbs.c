@@ -19,11 +19,12 @@ struct student
     char fathers_name[20];
     char course[10];
     char stream[10];
+    struct student *next;
 }s[60];
 
 int main()
 {
-
+typedef struct student stu;
 int choice;
 printf("\t \t   Welcome to Student Database System\n\n\n");
 printf("\nEnter 1 to Enter Details!\n");
@@ -37,6 +38,7 @@ switch(choice)
 {
     case 1:
     //INPUT Functionality
+
 
     case 2:
     //Search Feature
