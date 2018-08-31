@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -114,16 +115,12 @@ void Edit(long regno)
     p=h;
 
     int choice;
-    long contact;
-    char *email;
-    char *course;
-    char *stream;
     printf("Select what you want to edit");
     printf("1.Email");
     printf("2.Contact");
     printf("3.Course");
     printf("4.Stream");
-    printf("\t");
+    printf("\t\n Enter your choice");
     scanf("%d", &choice);
      if(p->next==NULL)
     {
@@ -132,48 +129,80 @@ void Edit(long regno)
     {
         
         case 1: printf("Enter new email");
-              scanf("%s", &s->email);
-                p->email=email;
+              scanf("%s", &p->email);
                 break;
         case 2: printf("Enter new contact no");
-                scanf("%ld",&contact);
-                p->contact=contact;
+                scanf("%ld",&p->contact);
                 break;
         case 3: printf("Enter new Stream");
-                scanf("%s",&stream);
-                p->stream=stream;
+                scanf("%s",&p->stream);
+                break;
         case 4: printf("Enter your new course"); 
-                scanf("%s", &s->course);
-                p->course=course;
+                scanf("%s", &p->course);
+                break;
+        case 5: printf("\n\nExiting.....!");
+                delay(200);
+                exit(0);
         
     }
-    }
-// else{
-//     while(p->reg_no!=reg_no)
-//     {
-//         p->next=next;
-//     }
+ }
+else{
     
-//     switch(choice)
-//     {
+    
+    while(p->reg_no!=regno)
+   {
+        p=p->next;
+   }
+    
+    switch(choice)
+     {
         
-//         case 1: printf("Enter new email");
-//                 scanf("%s",&email);
-//                 p->email=email;
-//                 break;
-//         case 2: printf("Enter new contact no");
-//                 scanf("%ld",&contact);
-//                 p->contact=contact;
-//                 break;
-//         case 3: printf("Enter new Stream");
-//                 scanf("%s",&stream);
-//                 p->stream=stream;
-//         case 4:  printf("\n\nExiting.....!");
-//         delay(200);
-//         exit(0);
-//     }
+        case 1: printf("Enter new email");
+                scanf("%s", &p->email);
+                break;
+        case 2: printf("Enter new contact no");
+                scanf("%ld",&p->contact);
+                break;
+        case 3: printf("Enter new Stream");
+                scanf("%s",&p->stream);
+                break;
+        case 4: printf("Enter your new course"); 
+                scanf("%s", &p->course);
+                break;
+        case 5: printf("\n\nExiting.....!");
+                delay(200);
+                exit(0);
+      }
     
-// }
+    }
+}
+void delete(long regno)
+{
+    struct student *p;
+    p=h;
+    while(p->next->reg_no!=regno)
+    {
+        p=p->next;
+    }
+    
+    struct student *s;
+    s=p->next;
+    p->next=p->next->next;
+    s->next=NULL;
+}
+
+void Display()
+{
+    struct student *p;
+    p=h;
+    
+    while(p->next!=NULL)
+    {
+        printf("\n Name: %s", p->name);
+        printf("\n Registration number: %ld", p->reg_no);
+        p=p->next;
+    }
+    
 }
 int main()
 {
@@ -183,8 +212,6 @@ long regno;
 int k=1;
 printf("\t \t   Welcome to Student Database System\n\n\n");
 while(k){
-    
-
 printf("\nEnter 1 to Enter Details!\n");
 printf("\nEnter 2 to Find Your Details\n");
 printf("\nEnter 3 to Edit Your Details\n");
@@ -206,18 +233,24 @@ switch(choice)
           printf("Enter your Registration no");
           scanf("%ld", &regno);
           fdetails(regno);
-           break;
+          break;
     case 3:
     //Edit Feature
-     printf("Enter your Registration no");
-     scanf("%ld", &regno);
+           printf("Enter your Registration no");
+           scanf("%ld", &regno);
+           Edit(regno);
+           break;
 
     case 4:
     //Delete Feature
-
-    case 5:
+           printf("Enter your Registration no");
+           scanf("%ld", &regno);
+           delete(regno);
+           break;
+     case 5:
     //Display Details only NAME AND REGISTRATION of complete database
-
+            Display();
+            break;
     
     case 6:
         printf("\n\nExiting.....!");
