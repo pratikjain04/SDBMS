@@ -20,7 +20,7 @@ struct student
     char *course;
     char *stream;
     struct student *next;
-};
+}*s;
 
 int main()
 {
@@ -40,15 +40,10 @@ switch(choice)
     //INPUT Functionality
 
     //Create Node
-    stu *s;
     s = (stu*)malloc(sizeof(stu));
     printf("\n\t \t \tEnter Your Details: ");
     printf("\nEnter Name: ");
     scanf("%s", &s->name);
-    printf("\nEnter Registration Number: ");
-    scanf("%l", &s->reg_no);
-    printf("\nEnter Contact: ");
-    scanf("%l", &s->contact);
     printf("\nEnter Email: ");
     scanf("%s", &s->email);
     printf("\nEnter Course: ");
@@ -57,7 +52,10 @@ switch(choice)
     scanf("%s", &s->stream);
     printf("Enter Cgpa: ");
     scanf("%f", &s->cgpa);
-
+      printf("\nEnter Registration Number: ");
+    scanf("%ld", &s->reg_no);
+    printf("\nEnter Contact: ");
+    scanf("%ld", &s->contact);
     s->next = NULL;
 
     case 2:
