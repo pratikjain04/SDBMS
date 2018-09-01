@@ -212,6 +212,7 @@ long regno;
 int k=1;
 printf("\t \t   Welcome to Student Database System\n\n\n");
 while(k){
+printf("\nEnter your choice");    
 printf("\nEnter 1 to Enter Details!\n");
 printf("\nEnter 2 to Find Your Details\n");
 printf("\nEnter 3 to Edit Your Details\n");
@@ -222,7 +223,7 @@ printf("\t");
 scanf("%d", &choice);
     
 switch(choice)
-{
+ {
     case 1:
     //INPUT Functionality
           Create();
@@ -256,12 +257,11 @@ switch(choice)
         printf("\n\nExiting.....!");
         delay(200);
         exit(0);
-}
+ }
 printf("Enter -1 to exit");
 scanf("%d", &k);
 if(k==-1)
 return;
 }
-
 
 }
