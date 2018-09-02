@@ -119,6 +119,7 @@ void Edit(long regno, struct student *head)
     printf("\n2.Contact");
     printf("\n3.Course");
     printf("\n4.Stream");
+    printf("\n5. Exit");
     printf("\n Enter your choice:   ");
     scanf("%d", &choice);
      if(edit->next==NULL)
@@ -127,17 +128,25 @@ void Edit(long regno, struct student *head)
     {
 
         case 1: printf("Enter new email");
-              scanf("%s", &edit->email);
+                scanf("%s", &edit->email);
+                printf("\n\nChanges Saved Successfully");
                 break;
+
         case 2: printf("Enter new contact no");
                 scanf("%ld",&edit->contact);
+                printf("\n\nChanges Saved Successfully");
                 break;
+
         case 3: printf("Enter new Stream");
                 scanf("%s",&edit->stream);
+                printf("\n\nChanges Saved Successfully");
                 break;
+
         case 4: printf("Enter your new course");
                 scanf("%s", &edit->course);
+                printf("\n\nChanges Saved Successfully");
                 break;
+
         case 5: printf("\n\nExiting.....!");
                 delay(200);
                 exit(0);
