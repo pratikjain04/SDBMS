@@ -119,7 +119,7 @@ void Edit(long regno)
     printf("2.Contact");
     printf("3.Course");
     printf("4.Stream");
-    printf("\t\n Enter your choice");
+    printf("\t\n Enter your choice:   ");
     scanf("%d", &choice);
      if(p->next==NULL)
     {
@@ -190,16 +190,16 @@ void delete(long regno)
     s->next=NULL;
 }
 
-void Display()
+void Display(struct student *disp)
 {
-    struct student *p;
-    p=h;
+    struct student *x;
+    x = disp;
 
-    while(p->next!=NULL)
+    while(x!=NULL)
     {
-        printf("\n Name: %s", p->name);
-        printf("\n Registration number: %ld", p->reg_no);
-        p=p->next;
+        printf("\n Name: %s", x->name);
+        printf("\n Registration number: %ld", x->reg_no);
+        x=x->next;
     }
 
 }
@@ -251,7 +251,7 @@ switch(choice)
            break;
      case 5:
     //Display Details only NAME AND REGISTRATION of complete database
-            Display();
+            Display(ptr);
             break;
 
     case 6:
