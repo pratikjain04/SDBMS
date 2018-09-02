@@ -187,13 +187,15 @@ else
 
 struct student* delete(long regno, struct student *head)
 {
+    printf("hello1");
     struct student *del;
     del=head;
+        printf("hello2");
 
     if(del==NULL)
         printf("\n\nDatabase is Empty...Deletion Operation cannot be performed!");
-
-    while(del->next->reg_no!=regno)
+    printf("hello3");
+    while(del->reg_no!=regno)
         del=del->next;
 
     struct student *st;
@@ -262,7 +264,7 @@ switch(choice)
     //Delete Feature
            printf("\nEnter your Registration no");
            scanf("%ld", &regno);
-           ptr = delete(regno ,ptr);
+           delete(regno ,ptr);
            break;
      case 5:
     //Display Details only NAME AND REGISTRATION of complete database
@@ -274,7 +276,7 @@ switch(choice)
         delay(200);
         exit(0);
  }
-printf("\t \tEnter -1 to exit, \t 1 to continue\n" );
+printf("\nEnter -1 to exit, \t 1 to continue\n" );
 scanf("%d", &k);
 
 if(k==-1)
