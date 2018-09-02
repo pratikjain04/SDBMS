@@ -153,9 +153,8 @@ void Edit(long regno, struct student *head)
 
     }
  }
-else{
-
-
+else
+{
     while(edit->reg_no!=regno)
         edit=edit->next;
 
@@ -185,19 +184,25 @@ else{
 
     }
 }
-void delete(long regno)
-{
-    struct student *p;
-    p=h;
-    while(p->next->reg_no!=regno)
-    {
-        p=p->next;
-    }
 
-    struct student *s;
-    s=p->next;
-    p->next=p->next->next;
-    s->next=NULL;
+struct student* delete(long regno, struct student *head)
+{
+    struct student *del;
+    del=head;
+
+    if(del==NULL)
+        printf("\n\nDatabase is Empty...Deletion Operation cannot be performed!");
+
+    while(del->next->reg_no!=regno)
+        del=del->next;
+
+    struct student *st;
+    st=del->next;
+    del->next=del->next->next;
+    free(st);
+    st=NULL;
+
+    return head;
 }
 
 void Display(struct student *disp)
@@ -257,7 +262,7 @@ switch(choice)
     //Delete Feature
            printf("\nEnter your Registration no");
            scanf("%ld", &regno);
-           delete(regno);
+           ptr = delete(regno ,ptr);
            break;
      case 5:
     //Display Details only NAME AND REGISTRATION of complete database
