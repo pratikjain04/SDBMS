@@ -271,8 +271,9 @@ switch(choice)
  }
 printf("\t \tEnter -1 to exit, \t 1 to continue\n" );
 scanf("%d", &k);
+
 if(k==-1)
-return;
+    return;
 }
 
 }
