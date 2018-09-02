@@ -27,8 +27,9 @@ struct student
 // s is the new node which will be created by malloc()
 // p is the pointer pointing to the current pointer being added after assigning its address to the previous node
 
+ struct student *ptr;
 
-stu* Create()
+struct student* Create()
 {
     typedef struct student stu;
      s = (stu*)malloc(sizeof(stu));
@@ -61,31 +62,25 @@ stu* Create()
     return h;
 }
 
-void fdetails(long reg_no)
+void fdetails(long reg_no, struct student *head)
 {
-    struct student *p;
-    p=h;
-    if(p->next==NULL)
+    struct student *find;
+    find=head;
+    if(find->next==NULL)
     {
-        Search(p);
+        Search(find);
     }
    else
    {
-       while(p->next!=NULL)
-  {
-      if(p->reg_no==reg_no)
+        while(find->next!=NULL)
         {
-          Search(p);
+            if(find->reg_no==reg_no)
+                Search(find);
+            else
+                find=find->next;
         }
 
-      else
-      {
-          p=p->next;
-      }
-
     }
-
-  }
 
 
 }
@@ -228,14 +223,15 @@ switch(choice)
  {
     case 1:
     //INPUT Functionality
-          stu *ptr = Create();
+
+          ptr = Create();
           break;
     //Create Node
     case 2:
     //Search Feature
           printf("Enter your Registration no");
           scanf("%ld", &regno);
-          fdetails(regno);
+          fdetails(regno, ptr);
           break;
     case 3:
     //Edit Feature
