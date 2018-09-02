@@ -108,36 +108,35 @@ void Search(struct student *k)
 }
 
 
-void Edit(long regno)
+void Edit(long regno, struct student *head)
 {
-    struct student *p;
-    p=h;
+    struct student *edit;
+    edit=head;
 
     int choice;
-    printf("Select what you want to edit");
-    printf("1.Email");
-    printf("2.Contact");
-    printf("3.Course");
-    printf("4.Stream");
-    printf("\t\n Enter your choice:   ");
+    printf("\n\nSelect what you want to edit");
+    printf("\n1.Email");
+    printf("\n2.Contact");
+    printf("\n3.Course");
+    printf("\n4.Stream");
+    printf("\n Enter your choice:   ");
     scanf("%d", &choice);
-     if(p->next==NULL)
+     if(edit->next==NULL)
     {
-
     switch(choice)
     {
 
         case 1: printf("Enter new email");
-              scanf("%s", &p->email);
+              scanf("%s", &edit->email);
                 break;
         case 2: printf("Enter new contact no");
-                scanf("%ld",&p->contact);
+                scanf("%ld",&edit->contact);
                 break;
         case 3: printf("Enter new Stream");
-                scanf("%s",&p->stream);
+                scanf("%s",&edit->stream);
                 break;
         case 4: printf("Enter your new course");
-                scanf("%s", &p->course);
+                scanf("%s", &edit->course);
                 break;
         case 5: printf("\n\nExiting.....!");
                 delay(200);
@@ -148,25 +147,27 @@ void Edit(long regno)
 else{
 
 
-    while(p->reg_no!=regno)
-   {
-        p=p->next;
-   }
+    while(edit->reg_no!=regno)
+        edit=edit->next;
 
     switch(choice)
      {
 
-        case 1: printf("Enter new email");
-                scanf("%s", &p->email);
+        case 1: printf("\nEnter new email   ");
+                scanf("%s", &edit->email);
+                printf("\n\nChanges Saved Successfully");
                 break;
-        case 2: printf("Enter new contact no");
-                scanf("%ld",&p->contact);
+        case 2: printf("\nEnter new contact no   ");
+                scanf("%ld",&edit->contact);
+                printf("\n\nChanges Saved Successfully");
                 break;
-        case 3: printf("Enter new Stream");
-                scanf("%s",&p->stream);
+        case 3: printf("\nEnter new Stream   ");
+                scanf("%s",&edit->stream);
+                printf("\n\nChanges Saved Successfully");
                 break;
-        case 4: printf("Enter your new course");
-                scanf("%s", &p->course);
+        case 4: printf("\nEnter your new course   ");
+                scanf("%s", &edit->course);
+                printf("\n\nChanges Saved Successfully");
                 break;
         case 5: printf("\n\nExiting.....!");
                 delay(200);
@@ -232,20 +233,20 @@ switch(choice)
     //Create Node
     case 2:
     //Search Feature
-          printf("Enter your Registration no");
+          printf("\nEnter your Registration no");
           scanf("%ld", &regno);
           fdetails(regno, ptr);
           break;
     case 3:
     //Edit Feature
-           printf("Enter your Registration no");
+           printf("\nEnter your Registration no");
            scanf("%ld", &regno);
-           Edit(regno);
+           Edit(regno, ptr);
            break;
 
     case 4:
     //Delete Feature
-           printf("Enter your Registration no");
+           printf("\nEnter your Registration no");
            scanf("%ld", &regno);
            delete(regno);
            break;
