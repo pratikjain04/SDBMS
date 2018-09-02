@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -14,21 +13,27 @@ void delay(int sec)
 struct student
 {
     long reg_no;
-    char name[10];
+    char name[20];
     float cgpa;
     long contact;
-    char email[20];
-    char course[20];
-    char stream[20];
+    char email[30];
+    char course[5];
+    char stream[10];
     struct student *next;
 }*h=NULL,*s,*p;
 
-void Create()
+
+// h is the head pointer which will always point to the first node
+// s is the new node which will be created by malloc()
+// p is the pointer pointing to the current pointer being added after assigning its address to the previous node
+
+
+stu* Create()
 {
     typedef struct student stu;
      s = (stu*)malloc(sizeof(stu));
     printf("\n\t \t \tEnter Your Details: ");
-    printf("\nEnter Name: ");
+    printf("\nEnter First Name: ");
     scanf("%s", &s->name);
     printf("\nEnter Email: ");
     scanf("%s", &s->email);
@@ -43,21 +48,17 @@ void Create()
     printf("\nEnter Contact: ");
     scanf("%ld", &s->contact);
     s->next = NULL;
-    
+
     if(h==NULL)
     {
-        h=s;
+        p=h=s;
     }
-    
+
     else
-    {
-       p=h;
-       while(p!=NULL)
-         {
-             p=p->next;
-         }
-         p->next=s;
+    {  p->next = s;
+        p = p->next;
     }
+    return h;
 }
 
 void fdetails(long reg_no)
@@ -76,21 +77,21 @@ void fdetails(long reg_no)
         {
           Search(p);
         }
-    
+
       else
       {
-          p=p->next; 
+          p=p->next;
       }
-  }        
+
+    }
+
   }
 
-  
+
 }
 
 void Search(struct student *k)
 {
-    
-    
     printf("\n\t \t Your Details: ");
     printf("\n Name: ");
     printf("%s", k->name);
@@ -124,10 +125,10 @@ void Edit(long regno)
     scanf("%d", &choice);
      if(p->next==NULL)
     {
-    
+
     switch(choice)
     {
-        
+
         case 1: printf("Enter new email");
               scanf("%s", &p->email);
                 break;
@@ -137,26 +138,26 @@ void Edit(long regno)
         case 3: printf("Enter new Stream");
                 scanf("%s",&p->stream);
                 break;
-        case 4: printf("Enter your new course"); 
+        case 4: printf("Enter your new course");
                 scanf("%s", &p->course);
                 break;
         case 5: printf("\n\nExiting.....!");
                 delay(200);
                 exit(0);
-        
+
     }
  }
 else{
-    
-    
+
+
     while(p->reg_no!=regno)
    {
         p=p->next;
    }
-    
+
     switch(choice)
      {
-        
+
         case 1: printf("Enter new email");
                 scanf("%s", &p->email);
                 break;
@@ -166,14 +167,14 @@ else{
         case 3: printf("Enter new Stream");
                 scanf("%s",&p->stream);
                 break;
-        case 4: printf("Enter your new course"); 
+        case 4: printf("Enter your new course");
                 scanf("%s", &p->course);
                 break;
         case 5: printf("\n\nExiting.....!");
                 delay(200);
                 exit(0);
       }
-    
+
     }
 }
 void delete(long regno)
@@ -184,7 +185,7 @@ void delete(long regno)
     {
         p=p->next;
     }
-    
+
     struct student *s;
     s=p->next;
     p->next=p->next->next;
@@ -195,14 +196,14 @@ void Display()
 {
     struct student *p;
     p=h;
-    
+
     while(p->next!=NULL)
     {
         printf("\n Name: %s", p->name);
         printf("\n Registration number: %ld", p->reg_no);
         p=p->next;
     }
-    
+
 }
 int main()
 {
@@ -212,7 +213,8 @@ long regno;
 int k=1;
 printf("\t \t   Welcome to Student Database System\n\n\n");
 while(k){
-printf("\nEnter your choice");    
+
+printf("\nEnter your choice");
 printf("\nEnter 1 to Enter Details!\n");
 printf("\nEnter 2 to Find Your Details\n");
 printf("\nEnter 3 to Edit Your Details\n");
@@ -221,12 +223,12 @@ printf("\nEnter 5 to See Complete Class List\n");
 printf("\nEnter 6 to Exit Application\n");
 printf("\t");
 scanf("%d", &choice);
-    
+
 switch(choice)
  {
     case 1:
     //INPUT Functionality
-          Create();
+          stu *ptr = Create();
           break;
     //Create Node
     case 2:
@@ -252,13 +254,13 @@ switch(choice)
     //Display Details only NAME AND REGISTRATION of complete database
             Display();
             break;
-    
+
     case 6:
         printf("\n\nExiting.....!");
         delay(200);
         exit(0);
  }
-printf("Enter -1 to exit");
+printf("\t \tEnter -1 to exit, \t 1 to continue\n" );
 scanf("%d", &k);
 if(k==-1)
 return;
