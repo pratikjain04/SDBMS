@@ -62,20 +62,23 @@ struct student* Create()
     return h;
 }
 
-void fdetails(long reg_no, struct student *head)
+void fdetails(long r_no, struct student *head)
 {
     struct student *find;
     find=head;
-    if(find->next==NULL)
-    {
+    if(find==NULL)
+        printf("\nDatabase is Empty...Try Entering Details First\n");
+
+    else if(find->next==NULL)
         Search(find);
-    }
-   else
-   {
-        while(find->next!=NULL)
+    else
+    {
+        while(find!=NULL)
         {
-            if(find->reg_no==reg_no)
-                Search(find);
+            if(find->reg_no==r_no)
+            {  Search(find);
+                break;
+            }
             else
                 find=find->next;
         }
@@ -209,14 +212,14 @@ int k=1;
 printf("\t \t   Welcome to Student Database System\n\n\n");
 while(k){
 
-printf("\nEnter your choice");
 printf("\nEnter 1 to Enter Details!\n");
 printf("\nEnter 2 to Find Your Details\n");
 printf("\nEnter 3 to Edit Your Details\n");
 printf("\nEnter 4 to Delete Your Details\n");
 printf("\nEnter 5 to See Complete Class List\n");
 printf("\nEnter 6 to Exit Application\n");
-printf("\t");
+
+printf("\n\nEnter your choice:   ");
 scanf("%d", &choice);
 
 switch(choice)
