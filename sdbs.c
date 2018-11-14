@@ -185,38 +185,50 @@ else
     }
 }
 
-struct student* delete(long regno, struct student *head)
+struct student* delRecord(long regno, struct student *head)
 {
-    printf("hello1");
-    struct student *del;
+    struct student *del, *st;
     del=head;
-        printf("hello2");
-
     if(del==NULL)
+    {
         printf("\n\nDatabase is Empty...Deletion Operation cannot be performed!");
-    printf("hello3");
-    while(del->reg_no!=regno)
+        return head;
+    }
+    if(del->next == NULL && del->reg_no == regno)       //condition for first node being the node to be deleted and the only node to be present
+     {   free(del);
+         del = NULL;
+         return head;
+     }
+
+    while(del->next->reg_no!=regno && del->next->next!=NULL)        //stopping a node before the node to be deleted
         del=del->next;
 
-    struct student *st;
-    st=del->next;
-    del->next=del->next->next;
+    st = del->next;         //putting a pointer at the node to be deleted
+    del = st->next;
     free(st);
-    st=NULL;
+    st = NULL;
 
     return head;
 }
+
 
 void Display(struct student *disp)
 {
     struct student *x;
     x = disp;
-
+    if(x == NULL)
+        printf("\nDatabase Empty.\n");
+    else
+    {
     while(x!=NULL)
     {
+        if(x->reg_no!=0)
+        {
         printf("\n Name: %s", x->name);
         printf("\n Registration number: %ld", x->reg_no);
+        }
         x=x->next;
+    }
     }
 
 }
@@ -264,7 +276,7 @@ switch(choice)
     //Delete Feature
            printf("\nEnter your Registration no");
            scanf("%ld", &regno);
-           delete(regno ,ptr);
+           delRecord(regno ,ptr);
            break;
      case 5:
     //Display Details only NAME AND REGISTRATION of complete database
