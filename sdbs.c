@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include<time.h>
 
+
+
 void delay(int sec)
 {
     int mil_sec = 1000*sec;
@@ -21,6 +23,13 @@ struct student
     char stream[10];
     struct student *next;
 }*h=NULL,*s,*p;
+
+void delay(int);
+void Search(struct student*);
+void fdetails(long, struct student*);
+void Edit(long, struct student*);
+struct student* delRecord(long, struct student*);
+
 
 
 // h is the head pointer which will always point to the first node
@@ -62,6 +71,26 @@ struct student* Create()
     return h;
 }
 
+void Search(struct student *k)
+{
+    printf("\n\t \t Your Details: ");
+    printf("\n Name: ");
+    printf("%s", k->name);
+    printf("\n Email: ");
+    printf("%s",k->email);
+    printf("\n Course: ");
+    printf("%s", k->course);
+    printf("\n Stream: ");
+    printf("%s", k->stream);
+    printf(" Cgpa: ");
+    printf("%f", k->cgpa);
+    printf("\nRegistration Number: ");
+    printf("%ld", k->reg_no);
+    printf("\n Contact: ");
+    printf("%ld", k->contact);
+}
+
+
 void fdetails(long r_no, struct student *head)
 {
     struct student *find;
@@ -88,24 +117,6 @@ void fdetails(long r_no, struct student *head)
 
 }
 
-void Search(struct student *k)
-{
-    printf("\n\t \t Your Details: ");
-    printf("\n Name: ");
-    printf("%s", k->name);
-    printf("\n Email: ");
-    printf("%s",k->email);
-    printf("\n Course: ");
-    printf("%s", k->course);
-    printf("\n Stream: ");
-    printf("%s", k->stream);
-    printf(" Cgpa: ");
-    printf("%f", k->cgpa);
-    printf("\nRegistration Number: ");
-    printf("%ld", k->reg_no);
-    printf("\n Contact: ");
-    printf("%ld", k->contact);
-}
 
 
 void Edit(long regno, struct student *head)
